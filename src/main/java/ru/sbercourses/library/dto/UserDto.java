@@ -2,11 +2,17 @@ package ru.sbercourses.library.dto;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDto {
 
     private Long id;
     private RoleDto role;
+    private String login;
+    private String password;
     private String firstName;
     private String lastName;
     private String middleName;

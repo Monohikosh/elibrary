@@ -2,15 +2,15 @@ package ru.sbercourses.library.rest.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.sbercourses.library.model.User;
+import ru.sbercourses.library.model.Author;
 import ru.sbercourses.library.repository.GenericRepository;
 
 @Slf4j
 @RestController
-@RequestMapping("/rest/user")
-public class UserController extends GenericController<User> {
+@RequestMapping("/rest/author")
+public class AuthorController extends GenericController<Author> {
 
-    protected UserController(GenericRepository<User> genericRepository) {
+    protected AuthorController(GenericRepository<Author> genericRepository) {
         super(genericRepository);
     }
 

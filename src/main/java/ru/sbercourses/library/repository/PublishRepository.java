@@ -1,8 +1,9 @@
 package ru.sbercourses.library.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ru.sbercourses.library.model.Publish;
 
-public interface PublishRepository extends JpaRepository<Publish, Long> {
+@Repository
+public interface PublishRepository extends GenericRepository<Publish> {
 
 }

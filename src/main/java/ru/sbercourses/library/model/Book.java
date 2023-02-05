@@ -3,6 +3,7 @@ package ru.sbercourses.library.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,4 +45,20 @@ public class Book extends GenericModel {
     )
     private Set<Author> authors = new HashSet<>();
 
+    @Builder
+    public Book(Long id, String createdBy, LocalDateTime createdWhen,
+                LocalDateTime updatedWhen, String updatedBy,
+                boolean isDeleted, LocalDateTime deletedWhen,
+                String deletedBy, String downloadLink, String title,
+                Genre genre, String storagePlace, Integer amount,
+                String publishYear, Set<Author> authors) {
+        super(id, createdBy, createdWhen, updatedWhen, updatedBy, isDeleted, deletedWhen, deletedBy);
+        this.downloadLink = downloadLink;
+        this.title = title;
+        this.genre = genre;
+        this.storagePlace = storagePlace;
+        this.amount = amount;
+        this.publishYear = publishYear;
+        this.authors = authors;
+    }
 }

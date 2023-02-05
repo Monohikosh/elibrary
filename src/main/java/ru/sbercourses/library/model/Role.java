@@ -1,6 +1,7 @@
 package ru.sbercourses.library.model;
 
 import lombok.*;
+import ru.sbercourses.library.dto.RoleDto;
 
 import javax.persistence.*;
 
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class Role extends GenericModel {
 
     @Id
     @Setter(AccessLevel.NONE)
@@ -23,5 +24,11 @@ public class Role {
 
     @Column(name = "description")
     private String description;
+
+    public Role(RoleDto roleDto) {
+        this.id = roleDto.getId();
+        this.title = roleDto.getTitle();
+        this.description = roleDto.getDescription();
+    }
 
 }

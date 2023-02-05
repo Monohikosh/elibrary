@@ -3,6 +3,7 @@ package ru.sbercourses.library.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,4 +30,16 @@ public class Author extends GenericModel {
     @ManyToMany(mappedBy = "authors", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private Set<Book> books = new HashSet<>();
 
+    @Builder
+    public Author(Long id, String createdBy, LocalDateTime createdWhen,
+                  LocalDateTime updatedWhen, String updatedBy,
+                  boolean isDeleted, LocalDateTime deletedWhen,
+                  String deletedBy, String authorFIO, String lifePeriod,
+                  String description, Set<Book> books) {
+        super(id, createdBy, createdWhen, updatedWhen, updatedBy, isDeleted, deletedWhen, deletedBy);
+        this.authorFIO = authorFIO;
+        this.lifePeriod = lifePeriod;
+        this.description = description;
+        this.books = books;
+    }
 }

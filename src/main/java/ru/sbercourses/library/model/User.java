@@ -3,6 +3,7 @@ package ru.sbercourses.library.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +20,12 @@ public class User extends GenericModel {
             foreignKey = @ForeignKey(name = "FK_USER_ROLES")
     )
     private Role role;
+
+    @Column(name = "login")
+    private String login;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "first_name")
     private String firstName;
@@ -49,5 +56,25 @@ public class User extends GenericModel {
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    @Builder
+    public User(Long id, String createdBy, LocalDateTime createdWhen,
+                LocalDateTime updatedWhen, String updatedBy,
+                boolean isDeleted, LocalDateTime deletedWhen,
+                String deletedBy, Role role, String login,
+                String password, String firstName,
+                String lastName, String middleName,
+                String email, String phone, String address) {
+        super(id, createdBy, createdWhen, updatedWhen, updatedBy, isDeleted, deletedWhen, deletedBy);
+        this.role = role;
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
 }
