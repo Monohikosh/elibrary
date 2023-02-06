@@ -1,5 +1,6 @@
 package ru.sbercourses.library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,6 +37,7 @@ public class Book extends GenericModel {
     private String publishYear;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    //@JsonIgnore // убирает рекурсию
     @JoinTable(
             name = "books_authors",
             joinColumns = @JoinColumn(name = "book_id"),

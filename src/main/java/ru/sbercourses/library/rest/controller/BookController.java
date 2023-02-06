@@ -1,10 +1,14 @@
 package ru.sbercourses.library.rest.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ru.sbercourses.library.model.Book;
 import ru.sbercourses.library.model.Genre;
-import ru.sbercourses.library.repository.BookRepository;
+import ru.sbercourses.library.service.BookService;
+import ru.sbercourses.library.service.GenericService;
 
 import java.util.List;
 
@@ -13,23 +17,19 @@ import java.util.List;
 @RequestMapping("/rest/book")
 public class BookController extends GenericController<Book> {
 
-    private final BookRepository bookRepository;
+    private final BookService service;
 
-    public BookController(BookRepository bookRepository) {
-        super(bookRepository);
-        this.bookRepository = bookRepository;
+    public BookController(GenericService<Book> service, BookService service1) {
+        super(service);
+        this.service = service1;
     }
-
 
     @GetMapping("/search")
     public List<Book> search(
             @RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "genre", required = false) Genre genre
     ) {
-        return bookRepository.findAllByGenreOrTitle(
-                genre,
-                title
-        );
+        return service.search(title, genre);
     }
 
 }

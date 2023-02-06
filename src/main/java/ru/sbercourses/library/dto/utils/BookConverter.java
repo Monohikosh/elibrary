@@ -1,13 +1,8 @@
 package ru.sbercourses.library.dto.utils;
 
 import org.springframework.stereotype.Component;
-import ru.sbercourses.library.dto.AuthorDto;
 import ru.sbercourses.library.dto.BookDto;
-import ru.sbercourses.library.model.Author;
 import ru.sbercourses.library.model.Book;
-import ru.sbercourses.library.model.Genre;
-
-import java.util.function.Function;
 
 @Component
 public class BookConverter extends Converter<Book, BookDto> {
