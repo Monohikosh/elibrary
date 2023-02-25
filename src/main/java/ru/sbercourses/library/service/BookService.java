@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import ru.sbercourses.library.model.Book;
 import ru.sbercourses.library.model.Genre;
 import ru.sbercourses.library.repository.BookRepository;
-import ru.sbercourses.library.repository.GenericRepository;
 
 import java.util.List;
 

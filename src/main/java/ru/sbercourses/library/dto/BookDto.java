@@ -12,7 +12,7 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookDto {
+public class BookDto extends GenericDto {
 
     private Long id;
     private String downloadLink;
@@ -21,5 +21,6 @@ public class BookDto {
     private String storagePlace;
     private Integer amount;
     private String publishYear;
+    private Set<Long> authorsIds;
 
 }

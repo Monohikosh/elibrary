@@ -2,16 +2,18 @@ package ru.sbercourses.library.dto;
 
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthorDto {
+public class AuthorDto extends GenericDto{
 
-    private Long id;
     private String authorFIO;
     private String lifePeriod;
     private String description;
+    private Set<Long> booksIds;
 
 }

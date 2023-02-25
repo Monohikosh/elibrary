@@ -5,23 +5,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ru.sbercourses.library.dto.BookDto;
+import ru.sbercourses.library.mapper.BookMapper;
 import ru.sbercourses.library.model.Book;
 import ru.sbercourses.library.model.Genre;
 import ru.sbercourses.library.service.BookService;
-import ru.sbercourses.library.service.GenericService;
 
 import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("/rest/book")
-public class BookController extends GenericController<Book> {
+public class BookController extends GenericController<Book, BookDto> {
 
     private final BookService service;
 
-    public BookController(GenericService<Book> service, BookService service1) {
-        super(service);
-        this.service = service1;
+    public BookController(BookService service, BookMapper mapper) {
+        super(service, mapper);
+        this.service = service;
     }
 
     @GetMapping("/search")
