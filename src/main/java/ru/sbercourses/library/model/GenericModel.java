@@ -24,7 +24,7 @@ public abstract class GenericModel {
     private String createdBy;
 
     @Column(name = "created_when")
-    private LocalDateTime createdWhen;
+    private LocalDateTime createdWhen = LocalDateTime.now();
 
     @Column(name = "updated_when")
     private LocalDateTime updatedWhen;

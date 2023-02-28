@@ -10,12 +10,14 @@ import java.util.List;
 @Repository
 public interface UserRepository extends GenericRepository<User> {
 
-//    List<User> findAllByFirstName(String firstName);
-//    List<User> findAllByFirstNameAndMiddleName(String firstName, String middleName);
-//
-//    @Query(nativeQuery = true, value = """
-//        select * from users where created_by = :createdBy
-//    """)
-//    List<User> findAllByCreatedBy(@Param(value = "createdBy") String createdBy);
+    List<User> findAllByFirstName(String firstName);
+    List<User> findAllByFirstNameAndMiddleName(String firstName, String middleName);
+
+    @Query(nativeQuery = true, value = """
+        select * from users where created_by = :createdBy
+    """)
+    List<User> findAllByCreatedBy(@Param(value = "createdBy") String createdBy);
+
+    User findUserByLogin(String login);
 
 }

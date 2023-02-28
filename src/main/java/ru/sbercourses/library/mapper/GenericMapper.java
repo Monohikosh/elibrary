@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.sbercourses.library.dto.GenericDto;
 import ru.sbercourses.library.model.GenericModel;
 
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -28,8 +29,18 @@ public abstract class GenericMapper<E extends GenericModel, D extends GenericDto
     }
 
     @Override
+    public List<E> toEntities(List<D> dtos) {
+        return dtos.stream().map(this::toEntity).toList();
+    }
+
+    @Override
     public D toDto(E entity) {
         return Objects.isNull(entity) ? null : mapper.map(entity, dtoClass);
+    }
+
+    @Override
+    public List<D> toDtos(List<E> entities) {
+        return entities.stream().map(this::toDto).toList();
     }
 
     Converter<D, E> toEntityConverter() {
